@@ -1,0 +1,67 @@
+# IRIS Mark Request
+
+(You should put an [X] in boxes with completed features.
+Lines starting with ">" are additional comments.)
+
+[X] The server can be started with the command `cargo run 127.0.0.1 6991`.
+
+[X] When a 'NICK' message is sent, the server stores the relevant information from it.
+[X] When a 'USER' message is sent after a 'NICK', the server replies with a RPL_WELCOME.
+[X] The RPL_WELCOME contains the user's full name from the 'USER' message
+[X] Non-'NICK'/'USER' messages are ignored until the user has sent both.
+
+[X] When a user sends a 'PING' message, an appropriate 'PONG' is sent back.
+
+[X] When a user sends a 'QUIT' message, their connection is dropped.
+
+[X] When a user sends a 'PRIVMSG' message to themselves, it is sent back to them.
+
+[X] Multiple users can join the same server.
+
+[X] Messages can be sent from one user to another.
+
+[X] A user can 'JOIN' a channel.
+
+[X] A user can 'PART' a channel.
+
+[X] All relevant messages sent by users inside a channel are sent to every other member of that channel.
+
+[X] My design never stores messages, and deletes users as soon as they have left the server.
+
+[X] My design never stores messages, and deletes users as soon as they have left the server.
+
+[X] It is possible to set reminders, using the following command (change this if you'd like)
+> PLUGIN REMINDER $5 $nick $Hello, How are you
+
+[X] I have provided an "example" plugin, which explains how somebody
+    else can interface with my plugin system.
+> PLUGIN LISTING
+The example plugin allower user to list all available channels by name, see lib/plugin.rs for more detail. 
+
+## Design Excellence
+
+During the assignment we make suggestions for "design excellence". Please list all those
+things you did, and where we can find them in your program.
+
+> - Integration testing in main.rs. For each test, it spawns an IRC sever, and create one/multiple connections to the sever. 
+  - Using env_logger to log sever information such as the ip address of incomming connection, errors and also debug information such as users/channel information.
+    Note that user information was never stored. 
+
+If you made any other design choices you think demonstrate an equivalent level
+of design excellence, please list them below (including where to find them).
+Note, we suggest you check with a tutor that your design is in fact excellent
+before adding something below:
+
+> - TODO
+
+## Design Limitations
+
+If you made any design decisions which you now regret making; but don't to go back and change them,
+let us know here. You can make up your design marks by acknowledging up to 5 things you would do
+differently now.
+
+> 
+  - The overall design of the IRC sever is to have a single sever threads and multiple clients threads, 
+  The sever thread is responsible for processing requests from client threads.
+  The client threads are responsible for collecting requests from IRC clients and send to sever threads. 
+  Although this design minimises the use of synchronisation primitives, (uses just one channel), it has just 1 sever threads, which maybe under heavy load when the number of client threads get large. 
