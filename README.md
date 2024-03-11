@@ -8,4 +8,3 @@ The overall design of the IRC sever is to have a single sever threads and multip
 ## Quick start 
 - The server can be started with the command `cargo run 127.0.0.1 6991`.
 - A compliant IRC client such as `sic` can be used with the server.
-- [More info](https://cgi.cse.unsw.edu.au/~cs6991/23T1/assignment/02)
