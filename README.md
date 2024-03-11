@@ -1,5 +1,5 @@
 # IRC-server
-The overall design of the IRC sever is to have a single sever threads and multiple clients threads, 
+The overall design of the IRC sever is to have a single sever thread and multiple clients threads, 
   The sever thread is responsible for processing requests from client threads.
   The client threads are responsible for collecting requests from IRC clients and send to sever threads. 
   
